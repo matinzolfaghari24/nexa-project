@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}تماس با ما | Nexa Store{% endblock %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <mdui-card class="page-card" variant="elevated">
+
+        <h1 class="page-title">تماس با ما</h1>
+
+        <p class="page-description">
+            برای ارتباط با ما می‌توانید از فرم زیر استفاده کنید.
+        </p>
+
+        <p>ایمیل: info@nexastore.com</p>
+        <p>تلفن: 021-12345678</p>
+        <p>آدرس: تهران، خیابان ولیعصر</p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>نام و نام خانوادگی</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>ایمیل</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>موضوع</label>
+                <input type="text" name="subject" required>
+            </div>
+
+            <div class="form-group">
+                <label>پیام</label>
+                <textarea name="message" rows="5" required></textarea>
+            </div>
+
+            <mdui-button type="submit" variant="filled" class="form-button">
+                ارسال پیام
+            </mdui-button>
+
+        </form>
+
+    </mdui-card>
+
+</div>
+
+{% endblock %}

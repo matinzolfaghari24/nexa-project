@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}ورود | Nexa Store{% endblock %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <mdui-card class="page-card" variant="elevated">
+
+        <h1 class="page-title">ورود به حساب کاربری</h1>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>نام کاربری</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label>رمز عبور</label>
+                <input type="password" name="password" required>
+            </div>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="form-error">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <mdui-button type="submit" variant="filled" class="form-button">
+                ورود
+            </mdui-button>
+
+        </form>
+
+        <p class="form-description">
+            حساب کاربری ندارید؟
+            <a href="{% url 'store:register' %}">ثبت‌نام کنید</a>
+        </p>
+
+    </mdui-card>
+
+</div>
+
+{% endblock %}

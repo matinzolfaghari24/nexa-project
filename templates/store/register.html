@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}ثبت‌نام | Nexa Store{% endblock %}
+
+{% block content %}
+
+<div class="page-container">
+
+    <mdui-card class="page-card" variant="elevated">
+
+        <h1 class="page-title">ثبت‌نام</h1>
+
+        <p class="page-description">
+            برای ساخت حساب کاربری اطلاعات زیر را وارد کنید.
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>نام کاربری</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label>ایمیل</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>رمز عبور</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <mdui-button type="submit" variant="filled" class="form-button">
+                ثبت‌نام
+            </mdui-button>
+
+        </form>
+
+        <p class="form-description">
+            قبلاً ثبت‌نام کرده‌اید؟
+            <a href="{% url 'store:login' %}">وارد شوید</a>
+        </p>
+
+    </mdui-card>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Nexa Store{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <a href="{% url 'store:about' %}" class="logo">
+            Nexa Store
+        </a>
+
+        <nav>
+            <a href="{% url 'store:about' %}">درباره ما</a>
+            <a href="{% url 'store:contact' %}">تماس با ما</a>
+            <a href="{% url 'store:login' %}">ورود</a>
+            <a href="{% url 'store:register' %}">ثبت‌نام</a>
+        </nav>
+
+    </header>
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <mdui-card class="message-card">
+                    {{ message }}
+                </mdui-card>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Nexa Store - تمامی حقوق محفوظ است.</p>
+    </footer>
+
+</body>
+</html>
